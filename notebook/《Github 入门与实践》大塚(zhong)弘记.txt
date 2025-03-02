@@ -1,0 +1,237 @@
+->ljh总结
+历史/发展
+数据结构/算法
+版本管理：提交更改/回滚
+垃圾回收机制
+
+
+
+
+
+
+该书由图灵教育赞助。
+
+
+->以下为书籍内容
+序言、目录结构、操作环境、版权声明、standing on shoulders of giants站在巨人肩膀上
+目录如下：
+社会化编程
+命令行操作
+工具链
+工作流
+应用到企业
+GUI
+
+------------
+
+1.什么是GitHub
+github图表名为"octocat"，造型网址为：http://octodex.github.com
+GitHub是为Git仓库提供的网络服务——GitHub上面的仓库都由git管理：http://git-scm.com
+其他托管Git的软件：gitlab、gitBucket、gitorious、RhodeCode，UI不同，需要学习成本
+
+2014，协同工作为主流，（2021开始则以AI协作为主流）
+群件(Groupware)和CRM (Customer Relationship Management顾客关系管理)  脱颖而出
+Github的Pull Request请求合并，对比合并前后差异、评价，不必再在版本管理、BUG跟踪、代码审查、邮件、IRC等多工具组合上花大量心思，象征着社会化编程
+             issue实现任务管理、BUG报告、TiDD(Ticket-driven Development)  ，采用@name @gtoup/team #number 的格式。
+             输入的语法格式统一为GFM(GitHub Flavored Markdown)，实现wiki功能
+             开发模式与开源软件相同，不必额外学习专用软件的开发过程
+             Gist管理零散代码，Star收藏，Broadcast官方通知，Bolg官方博客，Repositories贡献仓库，contributors贡献名单，Pulse访问热度，Network仓库状态和成员信息表，release历史版本，
+             查看代码：blame按行，raw在浏览器看，查看最近7天http://.../master@{7.day.ago}...master    day可替换为week/month/year
+                              查看指定日期http://.../master@{2013-01-01}...master
+
+2.社会化编程Social Coding
+GitHub以人为中心，而非传统的只以项目为中心。显示管理员信息，提交的代码、提交时间、注释理解等。就像看博客了解人品一样，可以了解技术能力
+所有人都可以参与进开发，而不再是少数管理者
+
+3.代码仓库
+Subversion 把代码集中到服务器，集中型。类似于web？
+github可以fork到本地仓库，分散型  git clone
+
+
+----------------------------
+安装git时会提示自动将win的CRLF替换为linux的LF
+CLI (Command Line Interface)命令行界面
+
+-----------------------------
+格式类似于3dmigoto
+git config --global 
+            user.name 或 user.email 设置姓名和邮箱
+            color.ui auto
+会在/.gitconfig内添加
+[user]
+name = ...
+email = ...
+
+[color]
+ui = auto
+-----------------------
+
+GitHub通过Gravater服务显示头像
+通过SSH密钥实现验证
+id_rsa私钥
+id_rsa.pub公钥
+
+follow关注
+
+ssh-keygen -t rsa -C ...
+ssh-rsa
+ssh -T
+
+仓库名、描述Description、公开/私有、新建readme、.gitignore记录不需更新的文件、license许可文件
+
+SSH克隆到本地：git clone [sshURL]     
+                             git clone ljh@git.com:main/.git
+
+
+4.管理命令
+4.1对文件
+git init 初始化，生成的.git称为"工作树"，管理文件快照
+git status   显示文件更改状态
+git add
+git commit
+git log 查看提交日志
+git push 推送更新
+
+
+
+git commit 自动打开编辑器，不编辑则关闭后中止提交
+git commit - m ".."单行(不打开编辑)
+                  --amend 修改提交内容
+                  -a 相当于执行git add
+
+git log - p md 显示md文件提交前后的内容变化
+            --graph 以图表形式给出
+git diff 工作树的差别，默认与最新一次提交的区别， HEAD 与暂存区差别，
+
+git reflog 仓库的操作日志
+
+git reset --head回滚版本
+
+git rebase -i 覆盖提交历史
+
+--------------
+git rebase -i HEAD~2
+->显示内容
+pick 7aaaa m1
+pick 6bbbb m2
+
+将m2压缩到m1，改为如下
+pick 7aaaa m1
+fixup 6bbbb m2
+
+再次查看m2的哈希值会发现从6bbbb改为7aaaa，6bbbb记录则彻底销毁
+-------------
+创建仓库，命名为origin（注：此时仓库不建议使用自动配置readme，否则会因为强制覆盖而出问题）
+git remote add origin ljh@...
+推送master分支到origin仓库
+git checkout master
+git push -u origin master
+获取origin仓库
+git clone ljh@...
+更新本地master分支为远程仓库origin的分支master
+git pull origin master
+
+
+4.2对分支
+git branch 显示所有分支
+              -D 删除指定分支
+git checkout 切换分支，-b相当于改为执行git branch 创建分支
+分支名前面的*表示当前分支，对分支提交称为"培育分支"
+-表示上一个，git checkout - 切换到上一个分支
+
+特性分支Topic，对其中一个功能延伸。注意，主干分支也可有多个。
+
+git merge 合并指定分支到当前分支，--no-ff 打开编辑器录入信息
+
+
+4.3冲突conflict
+解决会显示为fix
+错漏字可标记为typo
+
+
+垃圾回收Garbage Collection
+
+5.GitHub界面的快捷键
+shift + /
+选中文字，再按R键就可引用到评论框中。
+: 自动补全表情
+https://.../...?w=1 不显示空格差别
+创建_sidebar页，则不会显示在Page内，而是并列为Sidebar段
+
+5.1issue
+
+语法高亮
+指定语言为ruby
+````ruby
+def 关键字被高亮的
+end
+````
+
+管理：标签、里程碑
+
+Tasklist语法：
+复选列表
+# total
+- [ ] 选项1
+- [x] 被选中的
+- [ ] 选项3
+
+issue的关闭状态:
+fix/fixes/fixed/close/closes/closed/resolve/resolves/resolved
+fix #24  会关闭issue
+
+issue+源代码 = Pull Resquest
+
+获取diff或者patch格式的 Pull Resquest，加后缀即可：
+https://.../仓库名/pull/28.diff  
+ 
+
+
+puchcard 活力卡
+code frequency 代码修改频次
+github提供了API，以便搭建web页面；也可托管web页面到GitHub上，利用Octopress框架
+
+更新仓库： 先fork，再设置仓库名称git remote add upstream git://github.com/...，接着获取最新git fetch upstream，
+
+
+5.2.图片差异
+2-up 图片放两侧
+swipe 分界线
+onion skin 重叠
+difference 只显示不同
+
+
+5.3.工具链
+
+ruby / rails  语言需要先安装gem
+
+hub   封装了git
+eval "${hub alias -s}"在shell设置别名
+支持GitHub Enterprise(企业用，服务器部署在企业内网，源代码存储在自己服务器上，不会经过github公司)和GitHub
+[hub]
+host =  ljh...
+
+Travis CI   实现XP(EXtreme Programming极限编程)
+配置.travis.yml文件
+
+Coveralls
+配置.coveralls.yml文件
+
+Gemnasium  查询npm和rubygems的库版本
+code climate评估ruby代码
+jenkins测试
+coderwall显示勋章墙
+Gist代码共享，使用JavaScript的Ace编辑器，可在浏览器编码
+
+
+6.Flow替代Fork
+以部署为中心，流程自动化，
+令master分支保持可部署状态，只为特定作业创建分支，更加简单，所以可实现快速
+
+短时间内部署多次，HEAD无法返回太久之前的提交
+解决代码问题后尽量快部署，不要等反馈太多再搞，避免Pull Request太大，审阅容易出漏洞
+
+
+6.2以发布为中心
+书本推荐了git-flow工具帮助自动化，建议绘制开发流程图，分支为一条条线，版本为圆点，合并则线段连接两条线
+

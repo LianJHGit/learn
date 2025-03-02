@@ -1,0 +1,5 @@
+git remote add learn https://github.com/LianJHGit/learn.git
+git checkout firstbranch
+git add *
+git commit -m "These file come from the floder '../LianJH_github/learn'."
+git push -u learn firstbranch

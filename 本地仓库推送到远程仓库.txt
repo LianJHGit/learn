@@ -1,0 +1,48 @@
+#0 环境介绍
+txt文件等均位于 ../LianJH_github/learn_copy 下面
+远程仓库名为 learn ，包含分支main、firstbranch
+本地无仓库和分支
+
+#1 初始化
+> git init 初始化
+此时 ../learn_copy 文件夹内多出 .git 隐藏文件夹。
+> git branch显示的分支信息为空，无分支
+
+#1.1(optional 可选) 新增并切换到分支"One"
+> git checkout -b One
+
+#2 设置提交内容
+> git add *
+实现添加到暂存区，此时无分支
+
+> git commit -m "Here come from 'One' beanch in '../LianJH_github/learn_copy' ."
+实现提交，此时新增当前所在分支，若无新分支则默认标识为master
+
+此时远程仓库还没有本地文件，只是本地更新了.git的内容。
+同样的，本地也无法获取远程仓库的内容，尽管同名。git branch只显示One，没有远程仓库的分支信息。
+
+#3 关联仓库
+> git remote add learn1 https://github.com/LianJHGit/learn.git
+把当前目录关联远程仓库 learn ，并标识本地仓库为learn1
+
+#4 推送和验明正身
+
+> git checkout One
+切换到本地要提交的分支。
+
+> git push -u learn1 One
+推送本地内容learn1 One到远程仓库，远程仓库会新增分支One。并在顶部菜单栏下和仓库上面的中间以横幅形式提示仓库更改。
+       建议分支与远程仓库要更新的分支同名，以在对应分支推送更新，而不是远程仓库新建分支
+
+输入自己的email和password，或者SSH密钥
+
+弹窗，选code->输入验证码登录->信任该机器"Authorize git-ecosystem"->输入密码登录，自动创建凭证
+Congratulations, you're all set!
+Your device is now connected.
+
+
+#5  善后工作
+> git push learn1 --delete One
+删除远程分支One，再次访问时会显示404
+> git remote remove learn1
+删除本地仓库关联

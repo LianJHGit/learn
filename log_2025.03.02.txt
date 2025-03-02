@@ -1,0 +1,68 @@
+------------------
+运行log如下：
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy
+$ git init
+Initialized empty Git repository in E:/Git/work/LianJH-github/learn_copy/.git/
+
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy (master)
+$ git checkout -b One
+Switched to a new branch 'One'
+
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy (master)
+$ git branch
+
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy (One)
+$ git add *
+
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy (One)
+$ git branch
+
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy (One)
+$ git commit -m "One"
+[One (root-commit) af2f4f6] One
+ 5 files changed, 330 insertions(+)
+ create mode 100644 notebook/created_record1.png
+ create mode 100644 "notebook/\343\200\212Github \345\205\245\351\227\250\344\270\216\345\256\236\350\267\265\343\200\213\345\244\247\345\241\232(zhong)\345\274\230\350\256\260.txt"
+ create mode 100644 "notebook/\345\217\202\350\200\203github\346\226\207\346\241\243\345\205\245\351\227\250.txt"
+ create mode 100644 "notebook/\350\205\276\350\256\257\344\272\221deepseek--2025.03.01.txt"
+ create mode 100644 "\343\200\212Github \345\205\245\351\227\250\344\270\216\345\256\236\350\267\265\343\200\213\345\244\247\345\241\232(zhong)\345\274\230\350\256\260.txt"
+
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy (One)
+$ git branch
+* One
+
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy (One)
+$ git remote add learn1 https://github.com/LianJHGit/learn.git
+
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy (One)
+$ git push -u learn1 One
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (11/11), 85.37 KiB | 28.46 MiB/s, done.
+Total 11 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), done.
+remote:
+remote: Create a pull request for 'One' on GitHub by visiting:
+remote:      https://github.com/LianJHGit/learn/pull/new/One
+remote:
+To https://github.com/LianJHGit/learn.git
+ * [new branch]      One -> One
+branch 'One' set up to track 'learn1/One'.
+
+----------------------
+网络延迟过高，会触发超时报错，无法访问
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy (One)
+$ git push learn1 --delete One
+fatal: unable to access 'https://github.com/LianJHGit/learn.git/': OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 0
+
+成功删除远程分支One
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn_copy (One)
+$ git push learn1 --delete One
+To https://github.com/LianJHGit/learn.git
+ - [deleted]         One
+
+
+-----------------------
+
