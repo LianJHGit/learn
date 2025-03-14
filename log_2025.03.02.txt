@@ -65,4 +65,32 @@ To https://github.com/LianJHGit/learn.git
 
 
 -----------------------
+强制合并
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn (firstbranch)
+$ git pull learn firstbranch
+From https://github.com/LianJHGit/learn
+ * branch            firstbranch -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
 
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn (firstbranch)
+$ git pull learn firstbranch --allow-unrelated-histories
+From https://github.com/LianJHGit/learn
+ * branch            firstbranch -> FETCH_HEAD
+Merge made by the 'ort' strategy.
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 README.md
+
+windows@DESKTOP-IS2RGR7 MINGW64 /e/Git/work/LianJH-github/learn (firstbranch)
+$ git push -u learn firstbranch
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (12/12), 87.64 KiB | 29.21 MiB/s, done.
+Total 12 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/LianJHGit/learn.git
+   3ec57b6..066d8f0  firstbranch -> firstbranch
+branch 'firstbranch' set up to track 'learn/firstbranch'.
+-------------------------------------------------

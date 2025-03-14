@@ -1,0 +1,49 @@
+可开设小工具或工具链：ffmpeg，拖曳式生成小程序、app、web部件、svg，算法放大，数据结构可视化，git教学，正则表达式替换换行符，数学公式生成器、everything、snipaste、npm代理下载、3dmigoto获取内存dump、置顶窗口、识别文字、悬浮字幕(提示器)、实时翻译、OBS录屏、绘图
+
+公众号工具链(截至2023.06)：微信公众平台，排版：付费壹伴、秀米、365、189、135、微小宝等非官方编辑器，图片制作和取色：canva官网，封面图生成：创客图、懒设计、稿定设计、图怪兽，无手机号注册邮箱：snapmail
+
+找资料：企业名/功能名/地名+公众号。例如”广金”+”互联网院”，”腾讯”+”实习”/”招聘”/”技术团队”，”茂名”+”就业”/”人才中心”等等.
+也可搜索在线网站或web端，例如”找文件不同”+”在线”,”PSweb”
+也可搜索”开发文档”，了解程序入门。
+当今AI使用的#-符号即为markdown格式。
+
+视频剪辑工具链(截至2025.03)：
+b站”必剪”/抖音”剪映”：2024后多为付费服务，且对于素材较多、文件较大的项目作品不稳定，容易奔溃，导出时间长。
+PR：大众软件库公众号免费下载，尚未遇到奔溃问题，导出时间长。可搭配AE导出序列帧。
+potplayer：使用ffpmeg但闭源，播放视频可逐帧导出。python实现帧序列导出则用
+RADVideo：商业闭源，但个人用免费。转bk文件为mp4，无法转换则导avi后转mp4，或转序列帧png和音频wav出来后再合成。
+010editor：可查看文件二进制编码。
+blender3.6，可搭配”模之屋”使用。
+UninstallTool：卸载时可扫描注册表或跟踪程序调用，但是要点击确认深度扫描。
+everything：在超多数量文件中查找
+OBS：适合录制特定窗口。比ev录屏稳定，可中途暂停和切窗口。
+△ffmpeg：开源，对源数据操作，对于高达100G视频，导出速度仍极快，建议搭配可视化工具使用。
+------
+裁剪，从11分48秒开始裁剪16秒的时间，即裁剪00:11:48-00:12:04这一段视频，导出视频并命名为output.mp4。自动匹配mp4格式协议。
+ffmpeg -i E:\OBS\video\2024-11-20_11-57-05.mp4 -ss 00:11:48 -t 00:00:16 -c:v copy -y output.mp4
+通过复制来提取单独的视频（不含音频）：
+ffmpeg -i input.mp4 -vcodec copy -an out.mp4
+不解编码，通过复制覆盖来合并单独的视频和音频
+ffmpeg -i video.m4s -i audio.m4s -vcodec copy -acodec copy output.mp4
+转格式
+ffmpeg -i output1.avi output1.mp4
+ffmpeg -i infilename.avi -c:v copy -c:a copy -y outfilename.mp4
+循环视频至音频结束
+ffmpeg -stream_loop -1 -i F:\ bg_ani_pc.mp4 -i F:\ bgm_Bu7lyqVS.mp3 -vcodec copy -acodec copy -t 00:01:15 new.mp4
+webm转mov：
+ffmpeg -i助手.webm -pix_fmt yuv422p10le -c:v prores -profile:v 3 -vendor ap10 output.mov
+------
+
+部分功能：
+snipaste：贴图，适合搭配微信识别文字使用。
+PowerToys：置顶窗口
+批量替代换行符为”、”或其他符号：蓝色visual code中，ctrl+f后点击”>”展开，后批量替换
+超长json的格式化：紫色visual community 中，ctrl+k+f格式化。
+
+浏览器扩展/插件：
+global speed控制视频速度高达16x
+npm下载：NeatDownloadManager Extension
+沉浸式翻译：原文和译文上下显示，对比学习
+AdGuard 广告拦截器：搜索”屏蔽小冰”，复制两行代码到过滤器即可屏蔽广告
+Listen1：免费听歌
+Save All Resources：保存网页静态资源，建议搭配浏览器自带的”开发者工具”使用。推荐优先接触开发者工具的”源””网络””动画””应用程序””控制台”。
